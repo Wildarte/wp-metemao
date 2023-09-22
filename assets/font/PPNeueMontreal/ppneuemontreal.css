@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: normal;
+    font-weight: bold;
+    src: url('PPNeueMontreal-Bold.otf') format('opentype');
+    /* Outras propriedades de fonte opcionais, como weight, style, etc. */
+}
+
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: italic;
+    font-weight: bold;
+    src: url('PPNeueMontreal-BoldItalic.otf') format('opentype');
+    /* Outras propriedades de fonte opcionais, como weight, style, etc. */
+}
+
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: normal;
+    font-weight: 500;
+    src: url('PPNeueMontreal-Book.otf') format('opentype');
+    /* Outras propriedades de fonte opcionais, como weight, style, etc. */
+}
+
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: italic;
+    font-weight: 500;
+    src: url('PPNeueMontreal-Italic.otf') format('opentype');
+    /* Outras propriedades de fonte opcionais, como weight, style, etc. */
+}
+
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: normal;
+    font-weight: 300;
+    src: url('PPNeueMontreal-Light.otf') format('opentype');
+    /* Outras propriedades de fonte opcionais, como weight, style, etc. */
+}
+
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: normal;
+    font-weight: 500;
+    src: url('PPNeueMontreal-Medium.otf') format('opentype');
+    /* Outras propriedades de fonte opcionais, como weight, style, etc. */
+}
+
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: normal;
+    font-weight: 400;
+    src: url('PPNeueMontreal-Regular.otf') format('opentype');
+    /* Outras propriedades de fonte opcionais, como weight, style, etc. */
+}
+
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: normal;
+    font-weight: 100;
+    src: url('PPNeueMontreal-Thin.otf') format('opentype');
+    /* Outras propriedades de fonte opcionais, como weight, style, etc. */
+}
+
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: italic;
+    font-weight: 100;
+    src: url('PPNeueMontreal-ThinItalic.otf') format('opentype');
+    /* Outras propriedades de fonte opcionais, como weight, style, etc. */
+}
