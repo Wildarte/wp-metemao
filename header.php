@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html <?php language_attributes(); ?>>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Mete Mão</title>
+    <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
     
     <header class="header">
         <div class="content_header container">
             <div class="left_header d-flex">
-                <a href="" class="link_logo">
-                    <img src="assets/img/logo.png" alt="">
+                <?php
+                    $custom_logo_id = get_theme_mod('custom_logo');
+                    $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+                    
+                ?>
+                <a href="<?= home_url(); ?>" class="link_logo">
+                    <?php if (has_custom_logo()): ?>
+                    <img src="<?= esc_url($logo[0]); ?>" alt="<?= get_bloginfo('name') ?>">
+                    <?php endif; ?>
                 </a>
     
                 <nav class="menu ">

@@ -6,10 +6,10 @@ $(document).ready(function(){
     const link_logo = document.querySelector('.link_logo');
 
     $(".carousel_hero").owlCarousel({
-        loop:true,
+        loop: false,
         margin:0,
         nav:true,
-        autoplay:true,
+        autoplay:false,
         autoplayTimeout:2000,
         autoplayHoverPause:true,
         responsive:{
@@ -28,7 +28,7 @@ $(document).ready(function(){
     $(".carousel_project").owlCarousel({
         loop:true,
         margin:0,
-        nav:true,
+        nav:false,
         autoplay:true,
         autoplayTimeout:2000,
         autoplayHoverPause:true,

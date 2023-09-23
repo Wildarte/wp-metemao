@@ -728,6 +728,9 @@ nav.menu ul li a{
     padding: 2px 40px 2px 0;
     color: var(--color-white);
 }
+.list_cat_card_project li:first-child{
+    color: var(--color-main);
+}
 .list_cat_projects{
     display: flex;
     flex-wrap: wrap;

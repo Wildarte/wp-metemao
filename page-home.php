@@ -4,44 +4,74 @@
 
     <main>
         <section class="hero">
+
+            <?php
+            
+                $slides = get_field('slide_hero');
+
+                if($slides ):
+
+                // insert style ================================
+                echo '<style> @media(max-width: 768px){';
+                $count_slide = 0;
+                foreach($slides as $slide):
+                   
+                    echo '.slide-hero-'.$count_slide.'{background-image: url('.$slide['imagem_mobile']['url'].')!important}';
+                    $count_slide++;
+                    
+                endforeach;
+                echo '}</style>';
+                // insert style ================================
+
+            ?>
             <div class="carousel_hero owl-carousel">
-                <div class="slide_hero content_hero d-flex" style="background-image: url(assets/img/rec-mobile.png);">
-                    <div class="container d-flex">
-                        <div class="hero_left f-60 p-10">
-                            <h1 class="title-lg color-white">Construímos marcas, arte e conexões.</h1>
-                            <a href="" class="btn-transparent text-uppercase">Fale Conosco <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                        <div class="f-40">
-        
-                        </div>
-                    </div>
-                </div>
 
-                <div class="slide_hero content_hero d-flex" style="background-image: url(assets/img/rec-mobile.png);">
-                    <div class="container d-flex">
-                        <div class="hero_left f-60 p-10">
-                            <h1 class="title-lg color-white">Construímos marcas, arte e conexões.</h1>
-                            <a href="" class="btn-transparent text-uppercase">Fale Conosco <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                        <div class="f-40">
-        
-                        </div>
-                    </div>
-                </div>
+                <?php
+                    
+                    $count_slide = 0;
 
-                 <div class="slide_hero content_hero d-flex" style="background-image: url(assets/img/rec-mobile.png);">
-                    <div class="container d-flex">
-                        <div class="hero_left f-60 p-10">
-                            <h1 class="title-lg color-white">Construímos marcas, arte e conexões.</h1>
-                            <a href="" class="btn-transparent text-uppercase">Fale Conosco <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                        <div class="f-40">
-        
-                        </div>
-                    </div>
-                </div>
+                    foreach( $slides as $slide ):
+                        
+                        the_row();
+
+                        $slide_title = $slide['titulo_slide'];
+                        $slide_link = $slide['link_botao'];
+                        $img_desktop = $slide['imagem_desktop'];
+                        $img_mobile = $slide['imagem_mobile'];
+
+                        $class_slide = "slide-hero-".$count_slide;
+
+
+                        ?>
+                        
+                        <div class="slide_hero content_hero d-flex <?= $class_slide; ?>" style="background-image: url(<?= $img_desktop['url'] ?>);">
+                            <div class="container d-flex">
+                                <div class="hero_left f-60 p-10">
+                                    <h1 class="title-lg color-white"><?= $slide_title; ?></h1>
+                                    <a href="<?= $slide_link; ?>" class="btn-transparent text-uppercase">Fale Conosco <i class="bi bi-arrow-right"></i></a>
+                                </div>
+                                <div class="f-40">
                 
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <?php
+
+                        $count_slide++; //increment count_slide
+
+                    endforeach;
+
+                ?>
+
             </div>
+
+            <?php endif; ?>
+
+        </section>
+
+        <section>
+
         </section>
 
         <section class="method">
@@ -58,7 +88,7 @@
 
                 </div>
                 <div class="f-50 d-flex right_method">
-                    <p class="color-white text-lg">Com o método MTM, transformamos empresas em histórias de sucesso, unindo autenticidade, estratégia e criatividade. Desafiamos o comum, elevamos a experiência humana e moldamos o futuro. Se você busca deixar sua marca no mundo, junte-se a nós!</p>
+                    <p class="color-white text-lg"><?php the_field('campo_de_texto') ?> </p>
 
                     <div class="d-flex w-100">
                         <a href="" class="b-bottom-red color-white">Venha fazer parte <i class="bi bi-arrow-right"></i></a>
@@ -71,11 +101,35 @@
 
         <section class="section_carousel">
 
+            <?php
+
+                $args2 = [
+                    'post_type' => 'projeto',
+                    'posts_per_page' => 3
+                ];
+
+                $results_project = new WP_Query($args2);
+
+                if($results_project->have_posts()):
+
+            ?>
+
             <div class="carousel_project owl-carousel">
 
-                <article class="card_project card_project_slide" style="background-image: url(assets/img/rec3.png);">
+                <?php
+                    while($results_project->have_posts()):
+                        $results_project->the_post();
+                ?>
 
-                    <div class="marquee_title title-md color-white">bem sorriso bem sorriso bem sorriso bem sorriso bem sorriso</div>
+                <article class="card_project card_project_slide" style="background-image: url(<?= get_the_post_thumbnail_url(null, 'large') ?>);">
+
+                    <div class="marquee_title title-md color-white">
+                        <?php
+                            for($n = 0; $n < 10; $n++){
+                                echo get_the_title()." ";
+                            }
+                        ?>
+                    </div>
     
                     <div class="content_card_project">
     
@@ -83,25 +137,39 @@
                             <i class="bi bi-arrow-up-right"></i>
                         </div>
     
-                        <p class="color-white text-lg">Construímos marcas que desejam crescimento e autoridade no mercado através do Método MTM.</p>
+                        <p class="color-white text-lg"><?= get_the_content() ?></p>
     
                         <p class="color-white text-lg">Conheça a história da Bem Sorriso, Otta Sushi e Lilás Cozinha.</p>
     
                         <div class="info_card_project">
                           
-                            <ul class="list_cat_card_project">
-                                <li><span class="color-red text-uppercase">Branding</span></li>
-                                <li><span class="text-uppercase">UI.UX</span></li>
-                                <li><span class="text-uppercase">Mobile</span></li>
-                            </ul>
+                            
+                            <?php
+
+                                $categories = get_the_terms(get_the_ID(), 'categories');
+                                //var_dump($categories);
+
+                                if($categories) {
+                                    echo '<ul class="list_cat_card_project">';
+                                    foreach ($categories as $category) {
+                                        echo '<li><span  class="text-uppercase">' . esc_html($category->name) . '</span></li>';
+                                    }
+                                    echo '</ul>';
+                                }
+
+                            ?>
     
                             <div class="btn_view_project">
-                                <a href="">Ver Projetos</a>
+                                <a href="<?= get_the_permalink(); ?>">Ver Projeto</a>
                             </div>
                         </div>
                     </div>
                     
                 </article>
+
+                <?php endwhile; ?>
+
+                <!-- 
 
                 <article class="card_project card_project_slide" style="background-image: url(assets/img/rec.png);">
 
@@ -162,7 +230,11 @@
                     </div>
     
                 </article>
+
+                 -->
             </div>
+
+            <?php endif; wp_reset_postdata(); ?>
         </section>
 
         <section class="section_carousel_mobile bg-black">
@@ -272,18 +344,18 @@
                 <h2 class="title-simple">Clientes</h2>
 
                 <section class="d-flex list_clientes">
-                    <img src="assets/img/red.png" alt="">
-                    <img src="assets/img/usaflex.png" alt="">
-                    <img src="assets/img/eilas.png" alt="">
-                    <img src="assets/img/sorvete.png" alt="">
-                    <img src="assets/img/fazenda-futuro.png" alt="">
-                    <img src="assets/img/yan.png" alt="">
-                    <img src="assets/img/holos.png" alt="">
-                    <img src="assets/img/chica.png" alt="">
-                    <img src="assets/img/santa.png" alt="">
-                    <img src="assets/img/magrela.png" alt="">
-                    <img src="assets/img/bem-sorriso.png" alt="">
-                    <img src="assets/img/mana.png" alt="">
+                    <?php
+
+                        $clientes = get_field('clientes');
+
+                        //var_dump($clientes[0]);
+
+                        foreach($clientes as $cliente):
+                    ?>
+
+                    <img src="<?= $cliente ?>" alt="">
+
+                    <?php endforeach; ?>
                 </section>
             </div>
         </section>
@@ -349,7 +421,7 @@
                 </div>
 
                 <div class="d-flex bottom_services">
-                    <h2 class="title-md color-white text-center">Da mente vem a <span class="color-red">ideia</span>, da mão a criação. <img src="assets/img/hand-big.png" alt=""></h2>
+                    <h2 class="title-md color-white text-center">Da mente vem a <span class="color-red">ideia</span>, da mão a criação. <img src="<?= get_template_directory_uri() ?>/assets/img/hand-big.png" alt=""></h2>
 
                     <div class="w-100 text-center link_bottom_services">
                         <a href="" class="b-bottom-red color-white">Entre em contato <i class="bi bi-arrow-right"></i></a>
@@ -375,27 +447,58 @@
                 </div>
 
                 <section class="list_posts owl-carousel">
+
+                    <?php 
+
+                        $args = [
+                            'post_type' => 'post',
+                            'posts_per_page' => 3
+                        ];
+
+                        $results = new WP_Query($args);
+                    
+                        if($results->have_posts()):
+                            while($results->have_posts()):
+                                $results->the_post();
+                    
+                    ?>
+
                     <article class="card_post card_post_slide">
-                        <a href="">
-                            <img src="assets/img/rec-insta.png" alt="">
+                        <a href="<?= get_the_permalink() ?>">
+                            <img src="<?= get_the_post_thumbnail_url(null, 'medium') ?>" alt="">
                         </a>
         
                         <div class="hr-gray"></div>
         
                         <div class="info_card_post">
                             <div>
+                                <?php
+
+                                    $categories = get_the_category();
+
+                                ?>
                                 <ul class="list_cat_post">
-                                    <li><a href="">Design</a></li>
-                                    <li><a href="">Marketing</a></li>
+                                    <?php
+
+                                    if ($categories) {
+                                        echo '<ul class="lista-de-categorias">';
+                                        foreach ($categories as $category) {
+                                            echo '<li><a href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a></li>';
+                                        }
+                                        echo '</ul>';
+                                    }
+                                    ?>
                                 </ul>
-                                <span class="date_card_post">11/08/2023</span>
+                                <span class="date_card_post"><?= get_the_date('d/m/Y') ?></span>
                             </div>
                             
                             <div class="head_card_post">
-                                <h2 class="color-white"><a href="">Branding & Valor: Preciso disso na minha empresa?</a></h2>
+                                <h2 class="color-white"><a href="<?= get_the_permalink() ?>"><?= get_the_title(); ?></a></h2>
                             </div>
                         </div>
                     </article>
+
+                    <?php endwhile; endif; wp_reset_postdata(); ?>
         
                     <article class="card_post card_post_slide">
                         <a href="">
