@@ -69,7 +69,7 @@
             <?php endif; ?>
 
         </section>
-
+       
         <section>
 
         </section>
@@ -360,7 +360,7 @@
             </div>
         </section>
 
-        <section class="section_services bg-black">
+        <section class="section_services bg-black" >
             <div class="container content_services">
                 <div class="d-flex">
                     <div class="f-40 d-flex text-left over_title_services">
@@ -374,51 +374,129 @@
                 <div class="d-flex content_body_services">
                     <div class="f-50 left_body_services">
                         <ul class="list_services">
-                            <li>Consultoria</li>
-                            <li class="active">Branding</li>
-                            <li>Planejamento</li>
-                            <li>Marketing</li>
+                            <li><a href="#services" class="active" data-type="all">Todos</a></li>
+
+                            <?php
+                                $cats_service = get_terms([
+                                    'taxonomy' => 'categories_service'
+                                ]);
+
+                                foreach($cats_service as $cat):
+                            ?>
+                            <li ><a href="#services" data-type="<?= $cat->slug; ?>"><?= $cat->name; ?></a></li>
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
-                    <div class="f-50 right_body_services">
+                    <div class="f-50 right_body_services" id="services">
 
-                        <article class="card_service">
-                            <h3 class="color-white">Diagnóstico, análise de mercado, imersão e direcionadores.</h3>
-                            <p class="color-white">Integer varius feugiat fringilla. Etiam fringilla dui lacus, a viverra ipsum porttitor sit amet. Sed non fermentum nunc. Phasellus in elementum nulla, non volutpat risus. Nunc vel risus eu turpis sollicitudin scelerisque eu eu augue. Phasellus nibh ante, consectetur sed.</p>
+                        <?php
+
+                            $args = [
+                                'post_type' => 'service',
+                                'posts_per_page' => -1
+                            ];
+
+                            $result = new WP_Query($args);
+
+                            if($result->have_posts()):
+                                while($result->have_posts()):
+                                    $result->the_post();
+
+                                    $cats_single = get_the_terms(get_the_ID(), 'categories_service');
+
+                        ?>
+
+                        <article class="card_service" data-type="<?php  foreach($cats_single as $item){ echo $item->slug;} ?>">
+                            <h3 class="color-white"><?= get_the_title() ?></h3>
+                            <p class="color-white"><?= get_the_excerpt(); ?></p>
                             
-                            
-                            <a href="" class="b-bottom-red color-white">Ler mais <i class="bi bi-arrow-right"></i></a>
+                            <a href="<?= get_the_permalink() ?>" class="b-bottom-red color-white">Ler mais <i class="bi bi-arrow-right"></i></a>
                         </article>
 
-                        <article class="card_service">
+                        <?php  endwhile; endif; wp_reset_postdata() ?>
+
+
+                        <!-- 
+                        <article class="card_service" data-type="branding">
                             <h3 class="color-white">Plataforma de branding</h3>
                             <p class="color-white">Mauris magna orci, sollicitudin et ex ut, dignissim varius ligula. Praesent sed laoreet ante, ac volutpat massa. Fusce augue nibh, aliquet elementum enim a, pellentesque aliquet libero. Orci varius natoque penatibus et magnis dis parturient montes.</p>
 
                             <a href="" class="b-bottom-red color-white">Leia mais <i class="bi bi-arrow-right"></i></a>
                         </article>
 
-                        <article class="card_service">
+                        <article class="card_service" data-type="marketing">
                             <h3 class="color-white">Naming</h3>
                             <p class="color-white">Donec in sollicitudin lacus. Fusce vestibulum erat nec enim efficitur suscipit. Nullam bibendum consequat condimentum. In convallis neque ut mi venenatis, in.</p>
 
                             <a href="" class="b-bottom-red color-white">Leia mais <i class="bi bi-arrow-right"></i></a>
                         </article>
 
-                        <article class="card_service">
+                        <article class="card_service" data-type="planejamento">
                             <h3 class="color-white">Identidade visual</h3>
                             <p class="color-white">Donec vel cursus lectus. Quisque in dui eu enim gravida elementum. Sed semper elit quis dui pulvinar efficitur. Sed at augue in nunc commodo rutrum. Nullam pulvinar ante porta lacus sagittis, ut euismod velit semper. Donec.</p>
 
                             <a href="" class="b-bottom-red color-white">Leia mais <i class="bi bi-arrow-right"></i></a>
                         </article>
 
-                        <article class="card_service">
+                        <article class="card_service" data-type="consultoria, teste">
                             <h3 class="color-white">Identidade verbal</h3>
                             <p class="color-white">Praesent augue orci, dapibus nec massa a, convallis varius augue. Praesent tincidunt ex vel accumsan vehicula. Fusce quis lorem sed ante blandit.</p>
 
                             <a href="" class="b-bottom-red color-white">Leia mais <i class="bi bi-arrow-right"></i></a>
                         </article>
+                         -->
+
                     </div>
                 </div>
+
+                <script>
+                    const list_services = document.querySelectorAll('.list_services li a');
+                    const cards_services = document.querySelectorAll('.right_body_services .card_service');
+
+                    list_services.forEach((item, index) => {
+
+                        item.addEventListener('click', () => {
+
+                            let sel = item.getAttribute('data-type');
+
+                            if(sel == "all"){
+                                cards_services.forEach((item2) => {
+
+                                    item2.classList.remove('hide_card_service')
+
+                                });
+                            }else{
+                                list_services.forEach((item2) => {
+
+                                    item2.classList.remove('active')
+
+                                });
+
+                                let cat_select = item.getAttribute('data-type');
+
+                                cards_services.forEach((item2) => {
+                                    item2.classList.add('hide_card_service')
+
+                                });
+                                cards_services.forEach((item2) => {
+
+                                if(item2.getAttribute('data-type').includes(cat_select)){
+                                    item2.classList.remove('hide_card_service')
+                                }
+
+                                });
+
+                                item.classList.add('active')
+                            }
+
+                            
+                            
+
+                        });
+
+                    });
+                </script>
 
                 <div class="d-flex bottom_services">
                     <h2 class="title-md color-white text-center">Da mente vem a <span class="color-red">ideia</span>, da mão a criação. <img src="<?= get_template_directory_uri() ?>/assets/img/hand-big.png" alt=""></h2>

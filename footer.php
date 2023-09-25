@@ -1,3 +1,19 @@
+<?php
+
+$address = get_theme_mod('address');
+$phone = get_theme_mod('phone');
+$email = get_theme_mod('email');
+$politicas = get_theme_mod('politica');
+
+$instagram = get_theme_mod('instagram');
+$youtube = get_theme_mod('youtube');
+$linkedin = get_theme_mod('linkedin');
+$tiktok = get_theme_mod('tiktok');
+$twitter = get_theme_mod('twitter');
+
+?>
+
+
 <footer class="footer bg-black">
 
 <div class="container d-flex content_footer">
@@ -5,11 +21,11 @@
         <p class="color-white">O propósito se dá com verdade! Acesse nossas redes.</p>
 
         <ul class="list_social">
-            <li><a href=""><i class="bi bi-instagram"></i></a></li>
-            <li><a href=""><i class="bi bi-youtube"></i></a></li>
-            <li><a href=""><i class="bi bi-linkedin"></i></a></li>
-            <li><a href=""><i class="bi bi-tiktok"></i></a></li>
-            <li><a href=""><i class="bi bi-twitter"></i></a></li>
+            <li><a href="<?= $instagram ?>"><i class="bi bi-instagram"></i></a></li>
+            <li><a href="<?= $youtube ?>"><i class="bi bi-youtube"></i></a></li>
+            <li><a href="<?= $linkedin ?>"><i class="bi bi-linkedin"></i></a></li>
+            <li><a href="<?= $tiktok ?>"><i class="bi bi-tiktok"></i></a></li>
+            <li><a href="<?= $twitter ?>"><i class="bi bi-twitter"></i></a></li>
         </ul>
     </div>
     <div class="f-60 d-flex">
@@ -20,8 +36,7 @@
            
 
             <ul class="color-white">
-                <li>Rua Francisco Gonçalves, 1. Edf. Reitor Miguel - Sala 203 - Comércio Salvador / BA
-                    40015-090</li>
+                <li><?= $address != "" ? esc_html(get_theme_mod('address')) : "" ?></li>
             </ul>
         </div>
         <div class="f-33 col_footer">
@@ -29,23 +44,25 @@
                 <h3 class="b-bottom-red color-white text-uppercase">E-MAIL</h3>
             </div>
 
-            <a href="">contato@metemaoconteudo.com.br</a>
+            <a href="mailto:<?= $email != "" ? $email : "" ?>"><?= $email != "" ? $email : "" ?></a>
         </div>
         <div class="f-33 col_footer">
             <div class="head_footer">
                 <h3 class="color-white b-bottom-red text-uppercase">telefone / WHATSAPP</h3>
             </div>
 
-            <a class="color-white" href="(71) 99373-5002">(71) 99373-5002</a>
+            <a class="color-white" href="tel:<?= $phone != "" ? $phone : "" ?>"><?= $phone != "" ? $phone : "" ?></a>
         </div>
     </div>
 
     <div class="w-100 d-flex bottom_footer">
         <p class="color-white">© 2023 MTM Agência. Todos os direitos reservados.</p>
-        <p><a href="" class="color-white b-bottom-red">Política de privacidade</a></p>
+        <p><a href="<?= $politicas ?>" class="color-white b-bottom-red">Política de privacidade</a></p>
     </div>
 </div>
 </footer>
+
+
 
 <!-- 
 <script src="assets/js/jquery-3.6.0.min.js"></script>
@@ -53,5 +70,8 @@
 <script src="assets/js/script.js"></script>
  -->
     <?php wp_footer(); ?>
+
+
+
 </body>
 </html>

@@ -18,7 +18,7 @@ add_action('wp_enqueue_scripts', 'adicionar_estilos_e_scripts');
 function registrar_menus() {
     register_nav_menus(
         array(
-            'menu-principal' => 'Menu Principal', // Nome do menu e sua descrição
+            'menu-principal' => 'Menu Principal', 
             'menu-rodape'   => 'Menu Rodapé',
         )
     );
@@ -29,13 +29,13 @@ add_action('init', 'registrar_menus');
 function registrar_widgets() {
     register_sidebar(
         array(
-            'name'          => 'Barra lateral', // Nome da barra lateral
-            'id'            => 'barra-lateral', // ID exclusivo da barra lateral
-            'description'   => 'Esta é a barra lateral do seu tema.', // Descrição da barra lateral
-            'before_widget' => '<div class="widget">', // HTML antes do widget
-            'after_widget'  => '</div>', // HTML após o widget
-            'before_title'  => '<h2 class="widget-title">', // HTML antes do título do widget
-            'after_title'   => '</h2>', // HTML após o título do widget
+            'name'          => 'Barra lateral', 
+            'id'            => 'barra-lateral',
+            'description'   => 'Esta é a barra lateral do seu tema.', 
+            'before_widget' => '<div class="widget">',
+            'after_widget'  => '</div>', 
+            'before_title'  => '<h2 class="widget-title">', 
+            'after_title'   => '</h2>', 
         )
     );
 }
@@ -45,18 +45,17 @@ add_action('widgets_init', 'registrar_widgets');
 add_theme_support('post-thumbnails');
 
 
-add_theme_support('post-formats', array('aside', 'gallery', 'video'));
+//add_theme_support('post-formats', array('aside', 'gallery', 'video'));
 
 
 function comprimento_resumo_personalizado($length) {
-    return 20; // Número de palavras no resumo
+    return 20; 
 }
 add_filter('excerpt_length', 'comprimento_resumo_personalizado');
 
-// Função para adicionar classes CSS ao corpo da página
 function classes_css_body($classes) {
     if (is_single() || is_page()) {
-        $classes[] = 'pagina-unica'; // Adicione uma classe específica para páginas únicas
+        $classes[] = 'pagina-unica'; 
     }
     return $classes;
 }
@@ -67,4 +66,28 @@ function adicionar_suporte_a_logo() {
 }
 add_action('after_setup_theme', 'adicionar_suporte_a_logo');
 
+function theme_customize_register($wp_customize) {
+    $wp_customize->add_section('alternate_logo', array(
+        'title' => 'Logo Alternativa',
+        'priority' => 28,
+    ));
+
+    $wp_customize->add_setting('alternate_logo', array(
+        'default' => '',
+        'transport' => 'refresh', 
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'alternate_logo', array(
+        'label' => 'Escolha uma logo alternativa',
+        'section' => 'alternate_logo',
+        'settings' => 'alternate_logo',
+    )));
+}
+
+add_action('customize_register', 'theme_customize_register');
+
+
 require('admin/custom-project/custom-post-project.php');
+require('admin/custom-services/custom-post-service.php');
+require('admin/fields-footer.php');
+require('admin/fields-header.php');
