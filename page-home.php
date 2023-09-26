@@ -417,35 +417,7 @@
                         <?php  endwhile; endif; wp_reset_postdata() ?>
 
 
-                        <!-- 
-                        <article class="card_service" data-type="branding">
-                            <h3 class="color-white">Plataforma de branding</h3>
-                            <p class="color-white">Mauris magna orci, sollicitudin et ex ut, dignissim varius ligula. Praesent sed laoreet ante, ac volutpat massa. Fusce augue nibh, aliquet elementum enim a, pellentesque aliquet libero. Orci varius natoque penatibus et magnis dis parturient montes.</p>
 
-                            <a href="" class="b-bottom-red color-white">Leia mais <i class="bi bi-arrow-right"></i></a>
-                        </article>
-
-                        <article class="card_service" data-type="marketing">
-                            <h3 class="color-white">Naming</h3>
-                            <p class="color-white">Donec in sollicitudin lacus. Fusce vestibulum erat nec enim efficitur suscipit. Nullam bibendum consequat condimentum. In convallis neque ut mi venenatis, in.</p>
-
-                            <a href="" class="b-bottom-red color-white">Leia mais <i class="bi bi-arrow-right"></i></a>
-                        </article>
-
-                        <article class="card_service" data-type="planejamento">
-                            <h3 class="color-white">Identidade visual</h3>
-                            <p class="color-white">Donec vel cursus lectus. Quisque in dui eu enim gravida elementum. Sed semper elit quis dui pulvinar efficitur. Sed at augue in nunc commodo rutrum. Nullam pulvinar ante porta lacus sagittis, ut euismod velit semper. Donec.</p>
-
-                            <a href="" class="b-bottom-red color-white">Leia mais <i class="bi bi-arrow-right"></i></a>
-                        </article>
-
-                        <article class="card_service" data-type="consultoria, teste">
-                            <h3 class="color-white">Identidade verbal</h3>
-                            <p class="color-white">Praesent augue orci, dapibus nec massa a, convallis varius augue. Praesent tincidunt ex vel accumsan vehicula. Fusce quis lorem sed ante blandit.</p>
-
-                            <a href="" class="b-bottom-red color-white">Leia mais <i class="bi bi-arrow-right"></i></a>
-                        </article>
-                         -->
 
                     </div>
                 </div>
@@ -561,7 +533,8 @@
                                     if ($categories) {
                                         echo '<ul class="lista-de-categorias">';
                                         foreach ($categories as $category) {
-                                            echo '<li><a href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a></li>';
+                                            //echo '<li><a href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a></li>';
+                                            echo '<li>' . esc_html($category->name) . '</li>';
                                         }
                                         echo '</ul>';
                                     }
@@ -578,49 +551,7 @@
 
                     <?php endwhile; endif; wp_reset_postdata(); ?>
         
-                    <article class="card_post card_post_slide">
-                        <a href="">
-                            <img src="assets/img/rec-as.png" alt="">
-                        </a>
-        
-                        <div class="hr-gray"></div>
-        
-                        <div class="info_card_post">
-                            <div>
-                                <ul class="list_cat_post">
-                                    <li><a href="">Design</a></li>
-                                    <li><a href="">Marketing</a></li>
-                                </ul>
-                                <span class="date_card_post">11/08/2023</span>
-                            </div>
-                            
-                            <div class="head_card_post">
-                                <h2><a href="">Branding & Valor: Preciso disso na minha empresa?</a></h2>
-                            </div>
-                        </div>
-                    </article>
-        
-                    <article class="card_post card_post_slide">
-                        <a href="">
-                            <img src="assets/img/rec-pink.png" alt="">
-                        </a>
-        
-                        <div class="hr-gray"></div>
-        
-                        <div class="info_card_post">
-                            <div>
-                                <ul class="list_cat_post">
-                                    <li><a href="">Design</a></li>
-                                    <li><a href="">Marketing</a></li>
-                                </ul>
-                                <span class="date_card_post">11/08/2023</span>
-                            </div>
-                            
-                            <div class="head_card_post">
-                                <h2><a href="">Branding & Valor: Preciso disso na minha empresa?</a></h2>
-                            </div>
-                        </div>
-                    </article>
+                    
                 </section>
             </div>
         </section>

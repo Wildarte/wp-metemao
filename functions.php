@@ -86,6 +86,10 @@ function theme_customize_register($wp_customize) {
 
 add_action('customize_register', 'theme_customize_register');
 
+// Adicione um tamanho de imagem personalizado
+add_image_size('head_post', 1100, 600, true);
+
+
 
 require('admin/custom-project/custom-post-project.php');
 require('admin/custom-services/custom-post-service.php');

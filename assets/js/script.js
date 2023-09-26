@@ -80,15 +80,21 @@ $(document).ready(function(){
 
         var scroll_now = window.scrollY
 
-        if(scroll_now > 70){
+        if(scroll_now > 100){
             m_header.style.top = "-70px"
+            /*
             if(scroll_now > 100){
                 m_header.classList.add('header_fixed');
             }else{
                 m_header.classList.remove('header_fixed');
             }
+            */
+            m_header.classList.add('header_fixed');
+            console.log('in script: if')
         }else{
-            m_header.style.top = "0"
+            m_header.style.top = "0";
+            m_header.classList.remove('header_fixed');
+            console.log('in script: else');
         }
 
         

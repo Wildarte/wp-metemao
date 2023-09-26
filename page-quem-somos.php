@@ -26,9 +26,15 @@ get_header();
 
 
         <section class="video_play bg-black">
+        <?php
+                    $video_youtube = get_field('id_video_youtube');
+                ?>
             <img class="img_float" src="<?= get_template_directory_uri() ?>/assets/img/manifesto.png" alt="">
-            <div class="container content_video_play">
-                <img class="video_play_img" src="<?= get_template_directory_uri() ?>/assets/img/video-play.png" alt="">
+            <div class="container video_play content_video_play">
+                <!-- <img class="video_play_img" src="<?= get_template_directory_uri() ?>/assets/img/video-play.png" alt=""> -->
+                <img class="video_play_img" src="https://img.youtube.com/vi/<?= $video_youtube ?>/maxresdefault.jpg" alt="">
+
+                <img class="btn_play_img" src="<?= get_template_directory_uri() ?>/assets/img/play.png" alt="">
             </div>
 
             <div class="iframe_play_video">
@@ -77,6 +83,10 @@ get_header();
                     document.querySelector('.iframe_play_video').classList.add('open_iframe_play');
                     playVideo();
                 });
+                document.querySelector('.btn_play_img').addEventListener('click', () => {
+                    document.querySelector('.iframe_play_video').classList.add('open_iframe_play');
+                    playVideo();
+                });
                 document.querySelector('.iframe_play_video').addEventListener('click', () => {
                     document.querySelector('.iframe_play_video').classList.remove('open_iframe_play');
                     pauseVideo();
@@ -101,10 +111,9 @@ get_header();
 
                     ?>
                     <div class="card_simple">
-                        <a href="" class="color-white d-flex">
                             <i class="bi bi-arrow-up-right"></i>
-                            <p><?= $conq['conquista'] ?></p>
-                        </a>
+                            <p class="color-white d-flex"><?= $conq['conquista'] ?></p>
+                        
                     </div>
                     
                     <?php endforeach; ?>

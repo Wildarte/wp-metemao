@@ -7,13 +7,13 @@ get_header();
         <section class="bg-black hero-min">
             <div class="container content-hero-min">
                 <header class="bread-crumb d-flex">
-                    <a href="" class="">
-                        <img src="assets/img/icon-home.png" alt="">
+                    <a href="<?= home_url() ?>" class="">
+                        <img src="<?= get_template_directory_uri() ?>/assets/img/icon-home.png" alt="">
                     </a>
                     <i class="bi bi-arrow-right color-white"></i>
                     <span class="color-white">Blog</span>
                     <i class="bi bi-arrow-right color-white"></i>
-                    <span class="color-white">Itens grátis para download na Envatos ele...</span>
+                    <span class="color-white"><?= get_the_title() ?></span>
                 </header>
 
                 <div class="p-20 bg-black"></div>
@@ -26,12 +26,16 @@ get_header();
             <div class="container-sm">
 
                 <header class="head_post">
-                    <h1 class="title_post color-white">Itens grátis para download na Envato Elements para o mês de junho</h1>
+                    <h1 class="title_post color-white"><?= get_the_title() ?></h1>
 
-                    <img src="assets/img/img-post.jpg" alt="">
+                    <img src="<?= get_the_post_thumbnail_url(null, 'head_post') ?>" alt="">
                 </header>
 
                 <div class="container-post content_post d-flex">
+
+                    <?php
+                        the_content()
+                    ?>
 
                     <p>Fusce ultricies, ante in maximus volutpat, tortor massa accumsan tellus, a vestibulum sem odio ut dolor. Nam porta odio at maximus sagittis. Nulla a dui molestie orci interdum convallis. In iaculis rhoncus risus, non rhoncus quam fringilla vel. Duis in hendrerit justo, vitae imperdiet ipsum. Pellentesque rhoncus rhoncus justo at ultrices. Ut maximus lectus at tincidunt ornare. Proin a metus vel odio gravida posuere. Phasellus ipsum ante, maximus in dolor a, dignissim aliquet turpis. Fusce viverra justo ut mi ultrices consequat. Proin viverra augue eu ligula imperdiet elementum. In a vehicula magna, ut sollicitudin arcu. Etiam quis turpis non odio viverra posuere quis nec elit.</p>
                     

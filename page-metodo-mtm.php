@@ -8,8 +8,8 @@ get_header();
         <section class="bg-black hero-min">
             <div class="container content-hero-min">
                 <header class="bread-crumb d-flex">
-                    <a href="" class="">
-                        <img src="assets/img/icon-home.png" alt="">
+                    <a href="<?= home_url() ?>" class="">
+                        <img src="<?= get_template_directory_uri() ?>/assets/img/icon-home.png" alt="">
                     </a>
                     <i class="bi bi-arrow-right color-white"></i>
                     <span class="color-white">Método MTM</span>
@@ -28,8 +28,15 @@ get_header();
 
         <section class="bg-black">
             <div class="container">
+                <?php
+                    $video_youtube = get_field('id_video_youtube');
+                ?>
                 <div class="video_play container">
-                    <img class="video_play_img" src="assets/img/video-play-metodo.png" alt="">
+                    <!-- <img class="video_play_img" src="<?= get_template_directory_uri() ?>/assets/img/video-play-metodo.png" alt=""> -->
+                    <img class="video_play_img" src="https://img.youtube.com/vi/<?= $video_youtube ?>/maxresdefault.jpg" alt="">
+
+                    <img class="btn_play_img" src="<?= get_template_directory_uri() ?>/assets/img/play.png" alt="">
+                    
                 </div>
 
                 <div class="iframe_play_video">
@@ -38,6 +45,13 @@ get_header();
     
                 <script src="https://www.youtube.com/iframe_api"></script>
                 <script>
+
+                <?php
+                    $video_youtube = get_field('id_video_youtube');
+                ?>
+
+                let id_video = '<?= $video_youtube; ?>';
+
                     var player;
                     // Função chamada quando a API do YouTube está pronta
                     function onYouTubeIframeAPIReady() {
@@ -45,7 +59,7 @@ get_header();
                       player = new YT.Player('player', {
                         height: '360',
                         width: '640',
-                        videoId: 'ZQPO1UjxR6s', // Substitua 'VIDEO_ID' pelo ID do vídeo que deseja reproduzir
+                        videoId: id_video, // Substitua 'VIDEO_ID' pelo ID do vídeo que deseja reproduzir
                         playerVars: {
                             autoplay: 0, // O vídeo não inicia automaticamente
                             controls: 1, // Mostrar controles do player
@@ -73,6 +87,10 @@ get_header();
                         document.querySelector('.iframe_play_video').classList.add('open_iframe_play');
                         playVideo();
                     });
+                    document.querySelector('.btn_play_img').addEventListener('click', () => {
+                        document.querySelector('.iframe_play_video').classList.add('open_iframe_play');
+                        playVideo();
+                    });
                     document.querySelector('.iframe_play_video').addEventListener('click', () => {
                         document.querySelector('.iframe_play_video').classList.remove('open_iframe_play');
                         pauseVideo();
@@ -90,27 +108,23 @@ get_header();
                 </div>
 
                 <div class="d-flex list_card_simple2">
-                    <div class="card_simple2">
-                        <a href="" class="color-white d-flex">
+
+                    <?php
+
+                        $itens = get_field('itens');
+
+                        foreach($itens as $item):
+
+                    ?>
+
+                    <div class="card_simple2 d-flex">
                             <i class="bi bi-arrow-up-right"></i>
-                            <h4>Estratégia: conceitual e direcionamentos</h4>
-                            <p>Pesquisamos, escutamos, estudamos e conceituamos negócios para transformarem-se em marcas fortes.</p>
-                        </a>
+                            <h4 class="color-white d-flex"><?= $item['titulo'] ?></h4>
+                            <p class="color-white d-flex"><?= $item['descricao'] ?></p>
                     </div>
-                    <div class="card_simple2">
-                        <a href="" class="color-white d-flex">
-                            <i class="bi bi-arrow-up-right"></i>
-                            <h4>Tática: planejamento e contextos</h4>
-                            <p>Organizamos e criamos o plano de ação que guiará os próximos passos da marca, tendo como foco três pilares: estratégia, inteligência criativa e dados.</p>
-                        </a>
-                    </div>
-                    <div class="card_simple2">
-                        <a href="" class="color-white d-flex">
-                            <i class="bi bi-arrow-up-right"></i>
-                            <h4>Operação: Relacionamento e comunicação</h4>
-                            <p>Ser reconhecido como autoridade no mercado e criar uma legião de fãs são alguns dos resultados obtidos com um bom trabalho de gestão de marcas.</p>
-                        </a>
-                    </div>
+
+                    <?php endforeach; ?>
+                   
                 </div>
                 <div class="d-flex">
                     <h2 class="title-sm-lg color-white text-uppercase f-70">A autoridade que você busca pode tornar-se realidade.</h2>
