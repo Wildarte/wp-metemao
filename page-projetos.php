@@ -27,7 +27,7 @@ get_header();
 
                                 foreach($cats_service as $cat):
                             ?>
-                            <li ><a href="#services" data-type="<?= $cat->slug; ?>"><?= $cat->name; ?></a></li>
+                            <li ><a href="" data-type="<?= $cat->slug; ?>"><?= $cat->name; ?></a></li>
                         <?php endforeach; ?>
                     </ul>
 
@@ -35,7 +35,7 @@ get_header();
             </div>
         </section>
 
-        <section class="d-flex bg-black">
+        <section class="d-flex bg-black list_project">
 
         <?php
 
@@ -96,129 +96,61 @@ get_header();
                     
         <?php endwhile; wp_reset_postdata(); endif; ?>
 
-        <!-- 
-            <article class="card_project" style="background-image: url(assets/img/rec2.jpg);" data-type="ui-ux">
-
-                <div class="marquee_title title-md color-white">bem sorriso bem sorriso bem sorriso bem sorriso bem sorriso</div>
-
-                <div class="content_card_project">
-
-                    <div class="arrow_card_project">
-                        <i class="bi bi-arrow-up-right"></i>
-                    </div>
-
-                    <p class="color-white text-lg">Construímos marcas que desejam crescimento e autoridade no mercado através do Método MTM.</p>
-
-                    <p class="color-white text-lg">Conheça a história da Bem Sorriso, Otta Sushi e Lilás Cozinha.</p>
-
-                    <div class="info_card_project">
-                      
-                        <ul class="list_cat_card_project">
-                            <li><span class="color-red text-uppercase">Branding</span></li>
-                            <li><span class="text-uppercase">UI.UX</span></li>
-                            <li><span class="text-uppercase">Mobile</span></li>
-                        </ul>
-
-                        <div class="btn_view_project">
-                            <a href="">Ver Projeto</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </article>
-
-            <article class="card_project" style="background-image: url(assets/img/rec3.jpg);" data-type="redes-sociais">
-
-                <div class="marquee_title title-md color-white">bem sorriso bem sorriso bem sorriso bem sorriso bem sorriso</div>
-
-                <div class="content_card_project">
-
-                    <div class="arrow_card_project">
-                        <i class="bi bi-arrow-up-right"></i>
-                    </div>
-
-                    <p class="color-white text-lg">Construímos marcas que desejam crescimento e autoridade no mercado através do Método MTM.</p>
-
-                    <p class="color-white text-lg">Conheça a história da Bem Sorriso, Otta Sushi e Lilás Cozinha.</p>
-
-                    <div class="info_card_project">
-                      
-                        <ul class="list_cat_card_project">
-                            <li><span class="color-red text-uppercase">Branding</span></li>
-                            <li><span class="text-uppercase">UI.UX</span></li>
-                            <li><span class="text-uppercase">Mobile</span></li>
-                        </ul>
-
-                        <div class="btn_view_project">
-                            <a href="">Ver Projeto</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </article>
-
-            <article class="card_project" style="background-image: url(assets/img/rec4.png);" data-type="foto-e-video">
-
-                <div class="marquee_title title-md color-white">bem sorriso bem sorriso bem sorriso bem sorriso bem sorriso</div>
-
-                <div class="content_card_project">
-
-                    <div class="arrow_card_project">
-                        <i class="bi bi-arrow-up-right"></i>
-                    </div>
-
-                    <p class="color-white text-lg">Construímos marcas que desejam crescimento e autoridade no mercado através do Método MTM.</p>
-
-                    <p class="color-white text-lg">Conheça a história da Bem Sorriso, Otta Sushi e Lilás Cozinha.</p>
-
-                    <div class="info_card_project">
-                      
-                        <ul class="list_cat_card_project">
-                            <li><span class="color-red text-uppercase">Branding</span></li>
-                            <li><span class="text-uppercase">UI.UX</span></li>
-                            <li><span class="text-uppercase">Mobile</span></li>
-                        </ul>
-
-                        <div class="btn_view_project">
-                            <a href="">Ver Projeto</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </article>
-
-            <article class="card_project" style="background-image: url(assets/img/rec4.jpg);" data-type="campanha">
-
-                <div class="marquee_title title-md color-white">bem sorriso bem sorriso bem sorriso bem sorriso bem sorriso</div>
-
-                <div class="content_card_project">
-
-                    <div class="arrow_card_project">
-                        <i class="bi bi-arrow-up-right"></i>
-                    </div>
-
-                    <p class="color-white text-lg">Construímos marcas que desejam crescimento e autoridade no mercado através do Método MTM.</p>
-
-                    <p class="color-white text-lg">Conheça a história da Bem Sorriso, Otta Sushi e Lilás Cozinha.</p>
-
-                    <div class="info_card_project">
-                      
-                        <ul class="list_cat_card_project">
-                            <li><span class="color-red text-uppercase">Branding</span></li>
-                            <li><span class="text-uppercase">UI.UX</span></li>
-                            <li><span class="text-uppercase">Mobile</span></li>
-                        </ul>
-
-                        <div class="btn_view_project">
-                            <a href="">Ver Projeto</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </article>
-             -->
+       
         </section>
 
     </main>
+
+    <script>
+        const list_projeto = document.querySelectorAll('.list_cat_projects li a');
+        const cards_services = document.querySelectorAll('.list_project .card_project');
+
+        list_projeto.forEach((item, index) => {
+
+            item.addEventListener('click', (e) => {
+
+                e.preventDefault()
+
+                let sel = item.getAttribute('data-type');
+
+                if(sel == "all"){
+                    cards_services.forEach((item2) => {
+
+                        item2.classList.remove('hide_card_projeto')
+
+                    });
+                }else{
+                    
+
+                    let cat_select = item.getAttribute('data-type');
+
+                    cards_services.forEach((item2) => {
+                        
+                        item2.classList.add('hide_card_projeto')
+
+                    });
+
+                    cards_services.forEach((item2) => {
+
+                        if(item2.getAttribute('data-type').includes(cat_select)){
+                            item2.classList.remove('hide_card_projeto');
+                        }
+
+                    });
+
+                    item.classList.add('active')
+                }
+
+                list_projeto.forEach((item2) => {
+                    item2.classList.remove('active')
+                });
+                
+                list_projeto[index].classList.add('active')
+                
+
+            });
+
+        });
+    </script>
 
 <?php get_footer(); ?>

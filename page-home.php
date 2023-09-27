@@ -91,7 +91,7 @@
                     <p class="color-white text-lg"><?php the_field('campo_de_texto') ?> </p>
 
                     <div class="d-flex w-100">
-                        <a href="" class="b-bottom-red color-white">Venha fazer parte <i class="bi bi-arrow-right"></i></a>
+                        <a href="<?= home_url() ?>/metodo-mtm" class="b-bottom-red color-white">Venha fazer parte <i class="bi bi-arrow-right"></i></a>
                     </div>
                     
                 </div>
@@ -139,15 +139,105 @@
     
                         <p class="color-white text-lg"><?= get_the_content() ?></p>
     
-                        <p class="color-white text-lg">Conheça a história da Bem Sorriso, Otta Sushi e Lilás Cozinha.</p>
-    
                         <div class="info_card_project">
                           
                             
                             <?php
 
+                                
+
                                 $categories = get_the_terms(get_the_ID(), 'categories');
-                                //var_dump($categories);
+
+                                if($categories) {
+                                    echo '<ul class="list_cat_card_project">';
+                                    foreach ($categories as $category) {
+                                        echo '<li><span  class="text-uppercase">' . esc_html($category->name) . '</span></li>';
+                                    }
+                                    echo '</ul>';
+                                }
+
+                            ?>
+                            <?php
+
+                                $link = get_field('link');
+
+                                if($link){
+                                    $link_card = $link;
+                                }else{
+                                    $link_card = get_the_permalink();
+                                }
+
+                            ?>
+                            <div class="btn_view_project">
+                                <a href="<?= $link_card; ?>">Ver Projeto</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </article>
+
+                <?php endwhile; ?>
+
+            </div>
+
+            <?php endif; wp_reset_postdata(); ?>
+        </section>
+
+        <section class="section_carousel_mobile bg-black">
+
+            <?php
+
+                $args2 = [
+                    'post_type' => 'projeto',
+                    'posts_per_page' => 3
+                ];
+
+                $results_project = new WP_Query($args2);
+
+                if($results_project->have_posts()):
+
+            ?>
+
+            <div class="carousel_project_mobile">
+
+                <?php
+                    while($results_project->have_posts()):
+                        $results_project->the_post();
+                ?>
+
+                <article class="card_project card_project_slide">
+                    
+                    <?php
+
+                        $link = get_field('link');
+
+                        if($link){
+                            $link_card = $link;
+                        }else{
+                            $link_card = get_the_permalink();
+                        }
+
+                    ?>
+
+                    <a class="link_card_project_mobile d-flex" href="<?= $link_card ?>">
+                        <img src="<?= get_the_post_thumbnail_url(null, 'medium') ?>" alt="">
+                    </a>
+                    
+                    <div class="marquee_title title-md color-white"><?= get_the_title() ?></div>
+    
+                    <div class="content_card_project">
+    
+                        <div class="arrow_card_project">
+                            <i class="bi bi-arrow-up-right"></i>
+                        </div>
+    
+                        <p class="color-white text-lg"><?= get_the_content(); ?></p>
+    
+                        <p class="color-white text-lg"></p>
+    
+                        <div class="info_card_project">
+
+                            <?php
 
                                 if($categories) {
                                     echo '<ul class="list_cat_card_project">';
@@ -160,118 +250,16 @@
                             ?>
     
                             <div class="btn_view_project">
-                                <a href="<?= get_the_permalink(); ?>">Ver Projeto</a>
+                                <a href="">Ver Projeto</a>
                             </div>
                         </div>
                     </div>
                     
                 </article>
 
-                <?php endwhile; ?>
+                <?php endwhile; wp_reset_postdata(); ?>
 
                 <!-- 
-
-                <article class="card_project card_project_slide" style="background-image: url(assets/img/rec.png);">
-
-                    <div class="marquee_title title-md color-white">bem sorriso bem sorriso bem sorriso bem sorriso bem sorriso bem sorriso</div>
-    
-                    <div class="content_card_project">
-    
-                        <div class="arrow_card_project">
-                            <i class="bi bi-arrow-up-right"></i>
-                        </div>
-    
-                        <p class="color-white text-lg">Construímos marcas que desejam crescimento e autoridade no mercado através do Método MTM.</p>
-    
-                        <p class="color-white text-lg">Conheça a história da Bem Sorriso, Otta Sushi e Lilás Cozinha.</p>
-    
-                        <div class="info_card_project">
-                          
-                            <ul class="list_cat_card_project">
-                                <li><span class="color-red text-uppercase">Branding</span></li>
-                                <li><span class="text-uppercase">UI.UX</span></li>
-                                <li><span class="text-uppercase">Mobile</span></li>
-                            </ul>
-    
-                            <div class="btn_view_project">
-                                <a href="">Ver Projeto</a>
-                            </div>
-                        </div>
-                    </div>
-    
-                </article>
-
-                <article class="card_project card_project_slide" style="background-image: url(assets/img/rec2.png);">
-
-                    <div class="marquee_title title-md color-white">bem sorriso bem sorriso bem sorriso bem sorriso bem sorriso bem sorriso bem sorriso</div>
-    
-                    <div class="content_card_project">
-    
-                        <div class="arrow_card_project">
-                            <i class="bi bi-arrow-up-right"></i>
-                        </div>
-    
-                        <p class="color-white text-lg">Construímos marcas que desejam crescimento e autoridade no mercado através do Método MTM.</p>
-    
-                        <p class="color-white text-lg">Conheça a história da Bem Sorriso, Otta Sushi e Lilás Cozinha.</p>
-    
-                        <div class="info_card_project">
-                          
-                            <ul class="list_cat_card_project">
-                                <li><span class="color-red text-uppercase">Branding</span></li>
-                                <li><span class="text-uppercase">UI.UX</span></li>
-                                <li><span class="text-uppercase">Mobile</span></li>
-                            </ul>
-    
-                            <div class="btn_view_project">
-                                <a href="">Ver Projeto</a>
-                            </div>
-                        </div>
-                    </div>
-    
-                </article>
-
-                 -->
-            </div>
-
-            <?php endif; wp_reset_postdata(); ?>
-        </section>
-
-        <section class="section_carousel_mobile bg-black">
-
-            <div class="carousel_project_mobile">
-
-                <article class="card_project card_project_slide">
-
-                    <img src="assets/img/rec3.png" alt="">
-
-                    <div class="marquee_title title-md color-white">bem sorriso</div>
-    
-                    <div class="content_card_project">
-    
-                        <div class="arrow_card_project">
-                            <i class="bi bi-arrow-up-right"></i>
-                        </div>
-    
-                        <p class="color-white text-lg">Construímos marcas que desejam crescimento e autoridade no mercado através do Método MTM.</p>
-    
-                        <p class="color-white text-lg">Conheça a história da Bem Sorriso, Otta Sushi e Lilás Cozinha.</p>
-    
-                        <div class="info_card_project">
-                          
-                            <ul class="list_cat_card_project">
-                                <li><span class="color-red text-uppercase">Branding</span></li>
-                                <li><span class="text-uppercase">UI.UX</span></li>
-                                <li><span class="text-uppercase">Mobile</span></li>
-                            </ul>
-    
-                            <div class="btn_view_project">
-                                <a href="">Ver Projetos</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </article>
 
                 <article class="card_project card_project_slide">
 
@@ -336,7 +324,12 @@
                     </div>
     
                 </article>
+
+                 -->
             </div>
+            
+            <?php endif; ?>
+
         </section>
 
         <section class="section_clientes">

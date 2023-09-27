@@ -229,7 +229,7 @@ header.header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .link_logo img{
@@ -239,7 +239,7 @@ nav.menu{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0;
     width: calc(100% - 220px);
 }
 nav.menu ul{
@@ -313,12 +313,11 @@ nav.menu ul li a{
     margin-bottom: 40px;
 }
 .list_clientes{
-    justify-content: space-between;
     align-items: center;
     padding: 10px;
 }
 .list_clientes img{
-    width: 13%;
+    width: 16%;
     height: auto;
 }
 .content_clientes{
@@ -375,10 +374,29 @@ nav.menu ul li a{
     border-bottom: 1px solid var(--color-gray);
     transition: all .3s;
 }
+.card_service:last-child{
+    border-bottom: none;
+}
 .hide_card_service{
     height: 0!important;
     padding: 0!important;
     overflow: hidden!important;
+    border-bottom: none;
+}
+.hide_card_projeto{
+    height: 0!important;
+    padding: 0!important;
+    overflow: hidden!important;
+    border-bottom: none;
+    animation: hide_card .3s linear forwards .1s;
+}
+@keyframes hide_card {
+    from{
+        display: flex;
+    }
+    to{
+        display: none;
+    }
 }
 .card_service h3{
     margin-bottom: 30px;
@@ -507,7 +525,7 @@ nav.menu ul li a{
     position: absolute;
     left: 0;
     bottom: 80px;
-    padding: 10px;
+    padding: 10px 50px;
 }
 .carousel_hero .owl-dots button{
     width: 80px;
@@ -596,7 +614,8 @@ nav.menu ul li a{
 }
 .video_play .video_play_img{
     cursor: pointer;
-    filter: brightness(40%);
+    filter: brightness(24%);
+    width: 100%;
 }
 .video_play .btn_play_img{
     position: absolute;
@@ -605,6 +624,10 @@ nav.menu ul li a{
     width: 50px;
     height: 50px;
     cursor: pointer;
+}
+.iframe_play_video iframe{
+    width: 1200px!important;
+    height: 750px;
 }
 .content_conq{
     padding: 80px 0;
@@ -725,6 +748,9 @@ nav.menu ul li a{
     opacity: 0;
     transition: all .4s;
 }
+.link_card_project_mobile{
+    width: 100%;
+}
 .marquee_title{
     position: absolute;
     top: 80px;
@@ -760,6 +786,7 @@ nav.menu ul li a{
 }
 .content_card_project p{
     margin-bottom: 60px;
+    font-size: 1.3em;
 }
 .arrow_card_project{
     width: 100%;
@@ -963,16 +990,29 @@ nav.menu ul li a{
     padding: 20px;
 }
 .more_post a{
+    background-color: var(--color-gray);
+    color: var(--color-white);
+    padding: 2px 4px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 2px;
+}
+.more_post span{
     background-color: var(--color-main);
     color: var(--color-white);
     padding: 2px 8px;
     margin: 2px;
-}
-.more_post span{
-    background-color: var(--color-white);
-    color: var(--color-main);
-    padding: 2px 8px;
-    margin: 2px;
+    padding: 2px 4px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    align-items: center;
 }
 .more_post .nav-links{
     display: flex;
@@ -980,7 +1020,29 @@ nav.menu ul li a{
     justify-content: center;
 }
 
+.d-none{
+    display: none;
+}
 
+@media(min-width: 2200px){
+    .carousel_hero .owl-dots{
+        padding: 0 20%;
+    }
+}
+
+@media(min-width: 1921px){
+    .carousel_hero .owl-dots{
+        padding: 0 7%;
+    }
+}
+@media(max-width: 1760px){
+    .carousel_hero .owl-dots{
+        padding: 10px;
+    }
+    .content_header{
+        padding: 10px;
+    }
+}
 
 @media(max-width: 1366px){
     .title-lg{
@@ -1373,6 +1435,9 @@ nav.menu ul li a{
     .title_post{
         font-size: 3em;
     }
+    .iframe_play_video iframe{
+        height: 460px;
+    }
 }
 
 @media(max-width: 500px){
@@ -1452,6 +1517,12 @@ nav.menu ul li a{
     .bread-crumb i, .bread-crumb span{
         font-size: .9em;
         margin-right: 10px;
+    }
+    .iframe_play_video iframe{
+        height: 300px;
+    }
+    .card_project .marquee_title{
+        font-size: 2em;
     }
 }
 

@@ -57,8 +57,8 @@ get_header();
                     function onYouTubeIframeAPIReady() {
                       // Crie um objeto de player de vídeo
                       player = new YT.Player('player', {
-                        height: '360',
-                        width: '640',
+                        height: '660',
+                        width: '1000',
                         videoId: id_video, // Substitua 'VIDEO_ID' pelo ID do vídeo que deseja reproduzir
                         playerVars: {
                             autoplay: 0, // O vídeo não inicia automaticamente

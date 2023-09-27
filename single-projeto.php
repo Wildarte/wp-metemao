@@ -24,7 +24,7 @@ get_header();
             </div>
         </section>
 
-        <section class="bg-black">
+        <section class="bg-black d-flex">
             <?php
 
                 $imgs = get_field('galeria_de_imagens');
