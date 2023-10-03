@@ -9,7 +9,7 @@ get_header();
             <div class="container content-hero-min">
                 <header class="bread-crumb d-flex">
                     <a href="<?= home_url() ?>" class="">
-                        <img src="assets/img/icon-home.png" alt="">
+                        <img src="<?= get_template_directory_uri() ?>/assets/img/icon-home.png" alt="">
                     </a>
                     <i class="bi bi-arrow-right color-white"></i>
                     <span class="color-white">Método MTM</span>

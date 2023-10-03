@@ -62,13 +62,17 @@ $twitter = get_theme_mod('twitter');
 </div>
 </footer>
 
+<a href="#" class="btn_whatsapp_float">
+    <img src="<?= get_template_directory_uri() ?>/assets/img/whatsapp-fill.png" alt="">
+    <p>Mande um Zap</p>
+</a>
 
+<div class="popup_show" id="popupCookies">
+    <p>Nós usamos cookies e outras tecnologias semelhantes para melhorar a sua experiência em nossos serviços. Ao utilizar nossos serviços, você está ciente dessa funcionalidade. Conheça nosso <a href="#">Portal da Privacidade</a> e consulte nossa <a href="#">Política de Privacidade.</a></p>
 
-<!-- 
-<script src="assets/js/jquery-3.6.0.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/script.js"></script>
- -->
+    <a class="link_popup_show" href="#" id="btnAceitar">ACEITAR</a>
+</div>
+
     <?php wp_footer(); ?>
 
 

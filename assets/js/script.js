@@ -66,6 +66,8 @@ $(document).ready(function(){
         }
     });
     
+
+    //========================= menu mobile =============================================
     btn_menu_mobile.addEventListener('click', () =>{
         nav_menu.classList.add('open_menu_mobile');
         //link_logo.classList.add('link_logo_fixed');
@@ -75,7 +77,10 @@ $(document).ready(function(){
         nav_menu.classList.remove('open_menu_mobile');
         //link_logo.classList.remove('link_logo_fixed');
     });
+    //========================= menu mobile =============================================
 
+
+    //========================= scroll header ==================================================
     document.addEventListener('scroll', () => {
 
         var scroll_now = window.scrollY
@@ -90,15 +95,127 @@ $(document).ready(function(){
             }
             */
             m_header.classList.add('header_fixed');
-            console.log('in script: if')
         }else{
             m_header.style.top = "0";
             m_header.classList.remove('header_fixed');
-            console.log('in script: else');
         }
 
-        
+    });
+    //========================= scroll header ==================================================
 
-    })
+    
+    //========================= carousel =======================================================
+    if(document.querySelector('.carousel_hero')){
+        if(window.matchMedia('(max-width: 500px)').matches){
+
+            let title_hero_slide = document.querySelector('.title_hero_slide');
+            let height_title_hero_slide = title_hero_slide.getBoundingClientRect().height;
+            document.querySelector('.carousel_hero .owl-dots').style.top = (280+height_title_hero_slide)+"px";
+    
+        }else{
+    
+            let title_hero_slide = document.querySelector('.title_hero_slide');
+            let height_title_hero_slide = title_hero_slide.getBoundingClientRect().height;
+            document.querySelector('.carousel_hero .owl-dots').style.top = (340+height_title_hero_slide)+"px";
+    
+        }
+    
+        window.addEventListener('resize', () => {
+          
+            if(window.matchMedia('(max-width: 500px)').matches){
+    
+                setTimeout(function(){
+                    let title_hero_slide = document.querySelector('.title_hero_slide');
+                    let height_title_hero_slide = title_hero_slide.getBoundingClientRect().height;
+                    document.querySelector('.carousel_hero .owl-dots').style.top = (280+height_title_hero_slide)+"px";
+                }, 500);
+        
+            }else{
+                
+                setTimeout(function(){
+                    let title_hero_slide = document.querySelector('.title_hero_slide');
+                    let height_title_hero_slide = title_hero_slide.getBoundingClientRect().height;
+                    document.querySelector('.carousel_hero .owl-dots').style.top = (340+height_title_hero_slide)+"px";
+                }, 500)
+        
+            }
+    
+        })
+    }
+    
+
+    //========================= carousel =======================================================
+
 
 });
+
+
+
+
+
+
+//===================== cookies ===========================================================
+  // Fun&#231;&#227;o para exibir a pop-up de cookies
+  function exibirPopupCookies() {
+    var popup = document.getElementById("popupCookies");
+    popup.style.display = "flex";
+  }
+
+  // Fun&#231;&#227;o para definir um cookie
+  function definirCookie(nome, valor, expiracao) {
+    var dataExpiracao = new Date();
+    dataExpiracao.setTime(dataExpiracao.getTime() + (expiracao * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + dataExpiracao.toUTCString();
+    document.cookie = nome + "=" + valor + "; " + expires + "; path=/";
+  }
+
+  // Fun&#231;&#227;o para aceitar cookies
+  function aceitarCookies() {
+    definirCookie("aceitou_cookies", "true", 30); // Exemplo: O cookie expira em 30 dias
+    console.log("Cookies aceitos!");
+    var popup = document.getElementById("popupCookies");
+    popup.style.display = "none";
+  }
+
+  // Fun&#231;&#227;o para negar cookies
+  function negarCookies() {
+    definirCookie("aceitou_cookies", "false", 1)
+    console.log("Cookies negados!");
+    var popup = document.getElementById("popupCookies");
+    popup.style.display = "none";
+  }
+
+  function verificarCookie(nome) {
+      var cookies = document.cookie.split(";");
+
+      for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+          if (cookie.indexOf(nome + "=") === 0) {
+          // O cookie foi encontrado
+          return true;
+          }
+      }
+
+      // O cookie n&#227;o foi encontrado
+      return false;
+  }
+
+// Event listener para quando o documento estiver pronto
+document.addEventListener("DOMContentLoaded", function() {
+      
+      if(!verificarCookie('aceitou_cookies')){
+          exibirPopupCookies();
+      }
+
+    // Event listener para o clique no bot&#227;o "Aceitar"
+    document.getElementById("btnAceitar").addEventListener("click", function() {
+      aceitarCookies();
+    });
+
+});
+
+if(!verificarCookie('aceitou_cookies')){
+    var popup = document.getElementById("popupCookies");
+    popup.style.display = "flex";
+}
+//===================== cookies ===========================================================

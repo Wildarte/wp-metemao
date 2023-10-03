@@ -45,10 +45,10 @@
                         ?>
                         
                         <div class="slide_hero content_hero d-flex <?= $class_slide; ?>" style="background-image: url(<?= $img_desktop['url'] ?>);">
-                            <div class="container d-flex">
-                                <div class="hero_left f-60 p-10">
-                                    <h1 class="title-lg color-white"><?= $slide_title; ?></h1>
-                                    <a href="<?= $slide_link; ?>" class="btn-transparent text-uppercase">Fale Conosco <i class="bi bi-arrow-right"></i></a>
+                            <div class="container d-flex content_slide_hero">
+                                <div class="hero_left w-60 p-10">
+                                    <h1 class="title-lg color-white title_hero_slide"><?= $slide_title; ?></h1>
+                                    <a href="<?= $slide_link; ?>" class="btn-transparent text-uppercase btn_slide_hero">Fale Conosco <i class="bi bi-arrow-right"></i></a>
                                 </div>
                                 <div class="f-40">
                 
@@ -78,7 +78,7 @@
             <div class="container content_method d-flex">
 
                 <div class="f-50 left_method">
-                    <h2 class="title-md color-white">Método <br>MTM</h2>
+                    <h2 class="title-md color-white text-uppercase">Método <br>MTM</h2>
 
                     <ul class="w-100 list_method">
                         <li><span>estratégia,</span></li>
@@ -467,7 +467,7 @@
                     <h2 class="title-md color-white text-center">Da mente vem a <span class="color-red">ideia</span>, da mão a criação. <img src="<?= get_template_directory_uri() ?>/assets/img/hand-big.png" alt=""></h2>
 
                     <div class="w-100 text-center link_bottom_services">
-                        <a href="" class="b-bottom-red color-white">Entre em contato <i class="bi bi-arrow-right"></i></a>
+                        <a href="<?= home_url() ?>/contato" class="b-bottom-red color-white">Entre em contato <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
             </div>

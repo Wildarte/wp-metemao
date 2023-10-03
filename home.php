@@ -11,14 +11,11 @@ get_header();
                         <img src="<?= get_template_directory_uri() ?>/assets/img/icon-home.png" alt="">
                     </a>
                     <i class="bi bi-arrow-right color-white"></i>
-                    <span class="color-white">Omo</span>
+                    <span class="color-white">Blog</span>
                 </header>
 
-                <div class="body-hero-min head_service head_project">
+                <div class="body-hero-min head_service head_project space_head_blog">
                     
-                    <h1 class="color-white title-sm">Omo Multiação</h1>
-
-                    <h2 class="color-white title-sm">2022</h2>
 
                 </div>
             </div>

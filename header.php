@@ -81,14 +81,12 @@
             if(scroll_now > 100){
                 <?php  $alternate_logo2 = get_theme_mod('alternate_logo'); ?>
                 document.querySelector('.link_logo img').setAttribute('src', '<?= esc_url($alternate_logo2); ?>');
-                console.log('in header: if');
             }else{
                 <?php
                     $custom_logo_id2 = get_theme_mod('custom_logo');
                     $logo2 = wp_get_attachment_image_src($custom_logo_id2, 'full')[0];
                 ?>
                 document.querySelector('.link_logo img').setAttribute('src', '<?= $logo2; ?>')
-                console.log('in header: else');
             }
         
         })
