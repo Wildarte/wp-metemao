@@ -46,7 +46,7 @@
                         
                         <div class="slide_hero content_hero d-flex <?= $class_slide; ?>" style="background-image: url(<?= $img_desktop['url'] ?>);">
                             <div class="container d-flex content_slide_hero">
-                                <div class="hero_left w-60 p-10">
+                                <div class="hero_left w-60">
                                     <h1 class="title-lg color-white title_hero_slide"><?= $slide_title; ?></h1>
                                     <a href="<?= $slide_link; ?>" class="btn-transparent text-uppercase btn_slide_hero">Fale Conosco <i class="bi bi-arrow-right"></i></a>
                                 </div>
@@ -91,7 +91,7 @@
                     <p class="color-white text-lg"><?php the_field('campo_de_texto') ?> </p>
 
                     <div class="d-flex w-100">
-                        <a href="<?= home_url() ?>/metodo-mtm" class="b-bottom-red color-white">Venha fazer parte <i class="bi bi-arrow-right"></i></a>
+                        <a href="<?= home_url() ?>/metodo-mtm" class="b-bottom-red color-white btn_link_default">Venha fazer parte <i class="bi bi-arrow-right"></i></a>
                     </div>
                     
                 </div>
@@ -404,7 +404,7 @@
                             <h3 class="color-white"><?= get_the_title() ?></h3>
                             <p class="color-white"><?= get_the_excerpt(); ?></p>
                             
-                            <a href="<?= get_the_permalink() ?>" class="b-bottom-red color-white">Ler mais <i class="bi bi-arrow-right"></i></a>
+                            <a href="<?= get_the_permalink() ?>" class="b-bottom-red color-white btn_link_default">Ler mais <i class="bi bi-arrow-right"></i></a>
                         </article>
 
                         <?php  endwhile; endif; wp_reset_postdata() ?>
@@ -467,7 +467,7 @@
                     <h2 class="title-md color-white text-center">Da mente vem a <span class="color-red">ideia</span>, da mão a criação. <img src="<?= get_template_directory_uri() ?>/assets/img/hand-big.png" alt=""></h2>
 
                     <div class="w-100 text-center link_bottom_services">
-                        <a href="<?= home_url() ?>/contato" class="b-bottom-red color-white">Entre em contato <i class="bi bi-arrow-right"></i></a>
+                        <a href="<?= home_url() ?>/contato" class="b-bottom-red color-white btn_link_default">Entre em contato <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
             </div>

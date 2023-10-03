@@ -18,7 +18,7 @@ $twitter = get_theme_mod('twitter');
 
 <div class="container d-flex content_footer">
     <div class="f-40 field_logo_footer">
-        <p class="color-white">O propósito se dá com verdade! Acesse nossas redes.</p>
+        <p class="color-white">O propósito se dá com verdade!<br>Acesse nossas redes.</p>
 
         <ul class="list_social">
             <li><a href="<?= $instagram ?>"><i class="bi bi-instagram"></i></a></li>
@@ -62,10 +62,16 @@ $twitter = get_theme_mod('twitter');
 </div>
 </footer>
 
-<a href="#" class="btn_whatsapp_float">
+<?php
+    $whatsapp = get_theme_mod('contato_whatsapp');
+
+    if(!empty($whatsapp)):
+?>
+<a href="https://api.whatsapp.com/send?phone=<?= $whatsapp ?>" class="btn_whatsapp_float">
     <img src="<?= get_template_directory_uri() ?>/assets/img/whatsapp-fill.png" alt="">
     <p>Mande um Zap</p>
 </a>
+<?php endif; ?>
 
 <div class="popup_show" id="popupCookies">
     <p>Nós usamos cookies e outras tecnologias semelhantes para melhorar a sua experiência em nossos serviços. Ao utilizar nossos serviços, você está ciente dessa funcionalidade. Conheça nosso <a href="#">Portal da Privacidade</a> e consulte nossa <a href="#">Política de Privacidade.</a></p>
@@ -74,8 +80,6 @@ $twitter = get_theme_mod('twitter');
 </div>
 
     <?php wp_footer(); ?>
-
-
 
 </body>
 </html>

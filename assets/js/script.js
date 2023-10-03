@@ -208,8 +208,9 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
     // Event listener para o clique no bot&#227;o "Aceitar"
-    document.getElementById("btnAceitar").addEventListener("click", function() {
-      aceitarCookies();
+    document.getElementById("btnAceitar").addEventListener("click", function(e) {
+        e.preventDefault();
+        aceitarCookies();
     });
 
 });

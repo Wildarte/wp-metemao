@@ -115,7 +115,7 @@
     border: 2px solid var(--color-black);
 }
 .title-lg{
-    font-size: 9em;
+    font-size: 8.4em;
     font-weight: 500;
     line-height: 1em;
     margin-bottom: 40px;
@@ -311,17 +311,14 @@ nav.menu ul li a{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    align-content: space-around;
+    padding-top: 140px;
 }
 .left_method h2{
     width: 100%;
 }
 .list_method{
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-top: -80px;
+    margin-top: -100px;
 }
 .list_method li{
     width: 100%;
@@ -338,7 +335,7 @@ nav.menu ul li a{
     align-content: center;
 }
 .right_method p{
-    width: 80%;
+    width: 95%;
     margin-bottom: 40px;
 }
 .list_clientes{
@@ -467,11 +464,21 @@ nav.menu ul li a{
 }
 .content_footer p, .content_footer ul, .content_footer a{
     color: var(--color-white);
-    font-size: .9em;
+    font-weight: 300;
+}
+.content_footer p{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.content_footer ul, .content_footer a{
+    font-size: 16px;
     font-weight: 300;
 }
 .col_footer{
     padding: 10px;
+}
+.col_footer h3{
+    font-size: 12px;
 }
 
 .list_social{
@@ -487,8 +494,8 @@ nav.menu ul li a{
     margin: auto;
     display: flex;
     font-size: 1.5em;
-    width: 40px;
-    height: 40px;
+    width: 56px;
+    height: 56px;
     padding: 5px;
     margin: 5px;
     border-radius: 50%;
@@ -529,6 +536,15 @@ nav.menu ul li a{
 .iframe_play_video iframe{
     width: 800px!important;
     height: 480px;
+}
+.btn_link_default{
+    transition: all .5s;
+}
+.btn_link_default:hover i::before{
+    animation: move_arrow .5s linear forwards;
+}
+.btn_link_default:hover{
+    border-bottom: 1px solid var(--color-white);
 }
 
 
@@ -585,7 +601,6 @@ nav.menu ul li a{
     position: absolute;
     left: 0;
     /* bottom: 80px; */
-    padding: 10px;
     width: 1760px;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -806,7 +821,7 @@ nav.menu ul li a{
 .content_card_project{
     margin: auto;
     padding: 10px;
-    width: 60%;
+    width: 85%;
     position: relative;
     opacity: 0;
     transition: all .4s;
@@ -1170,6 +1185,9 @@ nav.menu ul li a{
     .content_header{
         padding: 10px;
     }
+    .hero_left{
+        padding: 10px;
+    }
 }
 
 @media(max-width: 1366px){
@@ -1369,6 +1387,9 @@ nav.menu ul li a{
     .method, .right_method, .left_method{
         height: auto;
     }
+    .left_method{
+        padding-top: 0;
+    }
     .list_method{
         margin: 30px 0;
     }
@@ -1407,7 +1428,7 @@ nav.menu ul li a{
         padding: 20px 0;
     }
     .list_services li a{
-        font-size: 2.5em;
+        font-size: 58px;
     }
     .right_body_services{
         padding: 30px 0;
@@ -1588,7 +1609,6 @@ nav.menu ul li a{
         width: calc(100% - 32px);
         left: 16px;
         bottom: 80px;
-        display: flex;
         flex-wrap: wrap;
 
     }
@@ -1673,7 +1693,7 @@ nav.menu ul li a{
         font-size: 2em;
     }
     .content_card_project p{
-        font-size: 1em;
+        font-size: 16px;
     }
     .title_post{
         font-size: 2em;
@@ -1690,6 +1710,17 @@ nav.menu ul li a{
     }
     .carousel_hero .owl-dots button{
         height: 3px;
+    }
+    .carousel_project_mobile .card_project img{
+        height: 457px;
+        object-fit: cover;
+    }
+    .card_post.card_post_slide{
+        padding: 2px;
+        margin: 0;
+    }
+    .head_card_post h2 a{
+        font-size: 26px;
     }
 }
 
@@ -1713,6 +1744,7 @@ nav.menu ul li a{
     }
     .content_blog{
         padding: 60px 10px;
+        border-bottom: 1px solid #000;
     }
     .header_single_service img{
         height: 180px;
