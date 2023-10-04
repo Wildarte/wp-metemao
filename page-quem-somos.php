@@ -111,7 +111,10 @@ get_header();
 
                     ?>
                     <div class="card_simple">
-                            <i class="bi bi-arrow-up-right"></i>
+                            <div class="icon_card_simple">
+                                <img class="" src="<?= get_template_directory_uri() ?>/assets/img/arrow-line.svg" alt="">
+                            </div>
+                            
                             <p class="color-white d-flex"><?= $conq['conquista'] ?></p>
                         
                     </div>

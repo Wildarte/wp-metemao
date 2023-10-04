@@ -61,5 +61,34 @@ get_header();
         <div class="space-border-gray"></div>
     </main>
 
+    <script>
+        const quote = document.querySelectorAll('.content_post blockquote');
+
+        if(quote){
+
+            quote.forEach((item) => {
+
+                let first = item.firstChild;
+
+                let img = document.createElement('img');
+                img.classList.add('img_quote');
+                img.src = "<?= get_template_directory_uri() ?>/assets/img/quote-left.png";
+
+                item.insertBefore(img, first);
+
+            });
+
+            quote.forEach((item) => {
+
+                let height_item = item.getBoundingClientRect().height;
+
+                console.log('height: '+height_item);
+                
+
+            });
+        }
+
+        
+    </script>
     
 <?php get_footer(); ?>

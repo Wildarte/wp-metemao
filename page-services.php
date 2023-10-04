@@ -113,53 +113,9 @@ get_header();
 
         <?php endforeach; ?>
 
-<!-- 
-        <section class="bg-black">
-            <div class="container content_default">
-                <div class="d-flex">
-                    <div class="w-100 text-left">
-                        <h2 class="title-sm color-white">Planejamento</h2>
-                    </div>
-
-                    <section class="d-flex list_card_simple2">
-                        <div class="card_simple2">
-                            <h3 class="color-white text-lg">Planejamento de comunicação</h3>
-
-                            <a href="" class="color-white b-bottom-red">Leia mais <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                        <div class="card_simple2">
-                            <h3 class="color-white text-lg">Planejamento de redes</h3>
-
-                            <a href="" class="color-white b-bottom-red">Leia mais <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                        <div class="card_simple2">
-                            <h3 class="color-white text-lg">Planejamento de mídia</h3>
-
-                            <a href="" class="color-white b-bottom-red">Leia mais <i class="bi bi-arrow-right"></i></a>
-                        </div>
-
-                        <div class="card_simple2">
-                            <h3 class="color-white text-lg">Marketing</h3>
-
-                            <a href="" class="color-white b-bottom-red">Leia Mais <i class="bi bi-arrow-right"></i></a>
-                        </div>
-
-                        <div class="card_simple2">
-                            <h3 class="color-white text-lg">Gestão de Marketing</h3>
-
-                            <a href="" class="color-white b-bottom-red">Leia Mais <i class="bi bi-arrow-right"></i></a>
-                        </div>
-
-                        <div class="card_simple2">
-                            <h3 class="color-white text-lg">Produção social media</h3>
-
-                            <a href="" class="color-white b-bottom-red">Leia Mais <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </section>
- -->
+        <div class="bg-black">
+            <div class="container space-border-gray"></div>
+        </div>                            
 
     </main>
 

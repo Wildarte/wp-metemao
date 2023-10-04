@@ -161,6 +161,8 @@
     position: relative;
     padding: 30px;
     background-color: var(--color-black);
+    margin-top: -2px;
+    margin-bottom: -2px;
 }
 .space-border-gray::before{
     content: "";
@@ -179,7 +181,7 @@
     padding: 10px;
 }
 .bread-crumb img{
-    width: 32px;
+    width: 24px;
     margin-right: 30px;
 }
 .bread-crumb i, .bread-crumb span{
@@ -283,6 +285,9 @@ nav.menu ul li a{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+nav.menu ul li.current-menu-item a{
+    color: var(--color-main)!important;
 }
 .hero{
     background-position: center;
@@ -391,6 +396,11 @@ nav.menu ul li a{
 .list_services li a.active{
     filter: brightness(100%)!important;
 }
+.list_services .img_list_services{
+    width: 60px;
+    margin-bottom: -10px;
+    margin-left: -8px;
+}
 
 .right_body_services{
     padding: 80px 10px;
@@ -410,8 +420,9 @@ nav.menu ul li a{
     border-bottom: none;
 }
 .hide_card_projeto{
-    height: 0!important;
-    padding: 0!important;
+    /* height: 0!important;
+    padding: 0!important; */
+    opacity: 0;
     overflow: hidden!important;
     border-bottom: none;
     animation: hide_card .3s linear forwards .1s;
@@ -727,6 +738,9 @@ nav.menu ul li a{
     width: 70%;
     margin-bottom: 30px;
 }
+.card_simple .icon_card_simple{
+    width: 100%;
+}
 /* ================= quem somos ============================================== */
 
 
@@ -736,7 +750,6 @@ nav.menu ul li a{
 .right_hero_min{
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
 }
 .card_simple2{
@@ -894,6 +907,7 @@ nav.menu ul li a{
     padding: 5px 20px;
     color: var(--color-white);
     filter: brightness(50%);
+    font-size: 26px;
     transition: all .23s;
 }
 .list_cat_projects li a.active{
@@ -956,6 +970,71 @@ nav.menu ul li a{
     animation: growCircle 1.2s linear infinite;
 }
 /* ===================================== page projetos =============================== */
+
+
+/* ============================================ page contato ================================== */
+.title_page_contato, .subtitle_page_contato{
+    margin-bottom: 20px;
+}
+.over_form_contact form{
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.over_form_contact form input, .over_form_contact form textarea{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color-main);
+    width: 100%;
+    background-color: transparent;
+    padding: 5px;
+    color: var(--color-white);
+    font-size: 26px;
+    margin-bottom: 16px;
+}
+.over_form_contact form label{
+    color: var(--color-white);
+    font-size: 16px
+}
+.over_form_contact button[type=submit], .over_form_contact input[type=submit]{
+    background-color: var(--color-white);
+    border: none;
+    color: var(--color-black);
+    text-transform: uppercase;
+    padding: 8px 20px;
+    display: flex;
+    justify-self: end;
+    font-size: 16px;
+    width: auto;
+    cursor: pointer;
+}
+.over_form_contact p{
+    width: 100%;
+}
+.over_form_contact form p:last-of-type{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.content_page_contato{
+    padding: 100px 10px;
+}
+.title_page_contato{
+    font-size: 130px;
+}
+.subtitle_page_contato{
+    font-size: 32px;
+    font-weight: 500;
+    width: 60%;
+}
+.over_form_contact .wpcf7-response-output{
+    color: var(--color-white);
+    border-color: var(--color-main)!important;
+    width: 100%;
+    margin: 10px 0!important;
+}
+/* ============================================ page contato ================================== */
 
 
 
@@ -1021,11 +1100,14 @@ nav.menu ul li a{
     margin-bottom: 20px;
     font-size: 1em;
     font-weight: 300;
-    padding: 10px;
+    line-height: 24px;
 }
 .content_post a{
     color: var(--color-main);
     padding: 0;
+}
+.content_post cite{
+    color: var(--color-white);
 }
 .content_post h1,
 .content_post h2,
@@ -1037,7 +1119,7 @@ nav.menu ul li a{
 .content_post ul
 .content_post ol{
     color: var(--color-white);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 .title_post{
     font-size: 4em;
@@ -1050,10 +1132,31 @@ nav.menu ul li a{
 .content_post ul, ol{
     color: var(--color-white);
     margin-left: 20px;
+    margin-bottom: 20px;
+    line-height: 24px;
+}
+.content_post blockquote{
+    padding: 20px;
+    border-bottom: 1px solid var(--color-main);
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 22%;
+}
+.content_post blockquote *{
+    font-weight: 500;
+}
+.content_post blockquote img.img_quote{
+    width: 15%;
+    position: absolute;
+    left: 20px;
+    top: 25px;
+    bottom: 0;
+    max-height: 100%;
 }
 .head_post img{
     width: 100%;
     object-fit: cover;
+    margin: auto 0;
 }
 /* =========================================== page post ===================================== */
 
@@ -1303,6 +1406,9 @@ nav.menu ul li a{
         padding: 10px;
         width: 100%;
         color: var(--color-white);
+    }
+    nav.menu ul li.current-menu-item a{
+        color: var(--color-black)!important;
     }
     .title-lg{
         font-size: 6em;
@@ -1621,6 +1727,18 @@ nav.menu ul li a{
     }
     .space_head_blog{
         padding: 10px;
+    }
+    .content_page_contato{
+        padding: 10px;
+    }
+    .subtitle_page_contato{
+        margin-bottom: 60px;
+    }
+    .over_form_contact form{
+        max-width: 100%;
+    }
+    .list_services .img_list_services{
+        display: none;
     }
 }
 

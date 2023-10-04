@@ -259,73 +259,6 @@
 
                 <?php endwhile; wp_reset_postdata(); ?>
 
-                <!-- 
-
-                <article class="card_project card_project_slide">
-
-                    <img src="assets/img/rec.png" alt="">
-
-                    <div class="marquee_title title-md color-white">bem sorriso</div>
-    
-                    <div class="content_card_project">
-    
-                        <div class="arrow_card_project">
-                            <i class="bi bi-arrow-up-right"></i>
-                        </div>
-    
-                        <p class="color-white text-lg">Construímos marcas que desejam crescimento e autoridade no mercado através do Método MTM.</p>
-    
-                        <p class="color-white text-lg">Conheça a história da Bem Sorriso, Otta Sushi e Lilás Cozinha.</p>
-    
-                        <div class="info_card_project">
-                          
-                            <ul class="list_cat_card_project">
-                                <li><span class="color-red text-uppercase">Branding</span></li>
-                                <li><span class="text-uppercase">UI.UX</span></li>
-                                <li><span class="text-uppercase">Mobile</span></li>
-                            </ul>
-    
-                            <div class="btn_view_project">
-                                <a href="">Ver Projeto</a>
-                            </div>
-                        </div>
-                    </div>
-    
-                </article>
-
-                <article class="card_project card_project_slide">
-
-                    <img src="assets/img/rec2.png" alt="">
-
-                    <div class="marquee_title title-md color-white">bem sorriso </div>
-    
-                    <div class="content_card_project">
-    
-                        <div class="arrow_card_project">
-                            <i class="bi bi-arrow-up-right"></i>
-                        </div>
-    
-                        <p class="color-white text-lg">Construímos marcas que desejam crescimento e autoridade no mercado através do Método MTM.</p>
-    
-                        <p class="color-white text-lg">Conheça a história da Bem Sorriso, Otta Sushi e Lilás Cozinha.</p>
-    
-                        <div class="info_card_project">
-                          
-                            <ul class="list_cat_card_project">
-                                <li><span class="color-red text-uppercase">Branding</span></li>
-                                <li><span class="text-uppercase">UI.UX</span></li>
-                                <li><span class="text-uppercase">Mobile</span></li>
-                            </ul>
-    
-                            <div class="btn_view_project">
-                                <a href="">Ver Projeto</a>
-                            </div>
-                        </div>
-                    </div>
-    
-                </article>
-
-                 -->
             </div>
             
             <?php endif; ?>
@@ -367,7 +300,7 @@
                 <div class="d-flex content_body_services">
                     <div class="f-50 left_body_services">
                         <ul class="list_services">
-                            <li><a href="#services" class="active" data-type="all">Todos</a></li>
+                            <li><a href="#services" class="active" data-type="all">Todos</a> <img src="<?= get_template_directory_uri() ?>/assets/img/hand-big.png" alt="" class="img_list_services"></li>
 
                             <?php
                                 $cats_service = get_terms([
@@ -417,11 +350,22 @@
 
                 <script>
                     const list_services = document.querySelectorAll('.list_services li a');
+                    const list_services_item = document.querySelectorAll('.list_services li');
                     const cards_services = document.querySelectorAll('.right_body_services .card_service');
 
                     list_services.forEach((item, index) => {
 
                         item.addEventListener('click', () => {
+
+                            
+                            list_services_item.forEach((item3) => {
+                                if(item3.querySelector('a').classList.contains('active')){
+                                    item3.removeChild(item3.querySelector('img'));
+                                    console.log('contem')
+                                }else{
+                                    console.log('nao contem')
+                                }
+                            })
 
                             let sel = item.getAttribute('data-type');
 
@@ -431,10 +375,16 @@
                                     item2.classList.remove('hide_card_service')
 
                                 });
+                                list_services.forEach((item2) => {
+
+                                    item2.classList.remove('active');
+
+                                });
+                                item.classList.add('active')
                             }else{
                                 list_services.forEach((item2) => {
 
-                                    item2.classList.remove('active')
+                                    item2.classList.remove('active');
 
                                 });
 
@@ -455,8 +405,11 @@
                                 item.classList.add('active')
                             }
 
-                            
-                            
+                            let img_icon = document.createElement('img');
+                            img_icon.classList.add('img_list_services')
+                            img_icon.src = "<?= get_template_directory_uri() ?>/assets/img/hand-big.png"
+
+                            list_services_item[index].appendChild(img_icon)
 
                         });
 
